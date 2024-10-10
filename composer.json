@@ -1,17 +1,17 @@
 {
-    "name": "author_username/package_name",
+    "name": "pforret/unlockdown",
     "version": "2.0.2",
-    "description": "package_description",
+    "description": "Import RSS feed or Wordpress XML to static Markdown pages",
     "keywords": [
-        "author_username",
-        "package_name"
+        "pforret",
+        "unlockdown"
     ],
-    "homepage": "https://github.com/author_username/package_name",
+    "homepage": "https://github.com/pforret/unlockdown",
     "license": "MIT",
     "authors": [
         {
-            "name": "author_name",
-            "email": "author@email.com",
+            "name": "Peter Forret",
+            "email": "peter@forret.com",
             "role": "Developer"
         }
     ],
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "package_namespace\\class_name\\": "src"
+            "Pforret\\Unlockdown\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "package_namespace\\class_name\\Tests\\": "tests"
+            "Pforret\\Unlockdown\\Tests\\": "tests"
         }
     },
     "scripts": {
