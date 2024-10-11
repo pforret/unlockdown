@@ -1,6 +1,6 @@
 {
     "name": "pforret/unlockdown",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Import RSS feed or Wordpress XML to static Markdown pages",
     "keywords": [
         "pforret",
