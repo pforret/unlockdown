@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Peter Forret</title>
+ <link href="https://blog.forret.com/atom.xml" rel="self"/>
+ <link href="https://blog.forret.com/"/>
+ <updated>2024-10-06T19:36:11+00:00</updated>
+ <id>https://blog.forret.com</id>
+ <author>
+   <name>Peter Forret</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Relaunch of launch.nuuz.io</title>
+   <link href="https://blog.forret.com/2024-10-06/relaunch-nuuz-io/"/>
+   <updated>2024-10-06T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024-10-06/relaunch-nuuz-io</id>
+   <content type="html">&lt;p&gt;Thi Saturday morning, I was browsing through my &lt;a href=&quot;https://www.simpleanalytics.com/&quot;&gt;SimpleAnalytics stats&lt;/a&gt; and saw one sorry number for a side-project I had forgotten about: &lt;a href=&quot;https://launch.nuuz.io/&quot;&gt;launch.nuuz.io&lt;/a&gt;. All of zero visits in the last month. This was a one-page website of mine that listed a number of launch sites for new projects (e.g. ProductHunt, HackerNews, Reddit etc.), and what the public consensus was on the &lt;strong&gt;best day-of-the-week and/or time-of-day&lt;/strong&gt; for posting a new project. It also showed a countdown for that ideal submission moment.&lt;/p&gt;
+
+&lt;p&gt;I checked how I created this project, and to my surprise it was a Laravel 10 project. That seemed like a bit of overkill. Since I hadn’t decided yet what I would procrastinate on this weekend, I decided to give this project a little love.&lt;/p&gt;
+
+&lt;p&gt;I quickly decided on a tech stack of &lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/&quot;&gt;mkdocs-material&lt;/a&gt;, since that is my favourite way of creating content these days, ever since I created &lt;a href=&quot;https://github.com/pforret/mkdox/&quot;&gt;pforret/mkdox&lt;/a&gt; to &lt;a href=&quot;/2024/03/09/mkdox-mkdocs-material-docker/&quot;&gt;make it even easier&lt;/a&gt;. Since this is a static site generator, and my web pages would be all static HTML, I would need to redevelop the countdown and timezone logic in JavaScript. Thanks to GitHub Copilot in PHPStorm, that was a breeze. Today, a mere 36 hours later and with only a few hours of actual work, I am proud to announce the &lt;strong&gt;relaunch of &lt;a href=&quot;https://launch.nuuz.io/&quot;&gt;launch.nuuz.io&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://launch.nuuz.io/&quot;&gt;&lt;img src=&quot;/wp-content/uploads/2024/10/launch-nuuz-io.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There is now a page per launch website (many more added to the original 5), a blog with related content (like “&lt;a href=&quot;https://launch.nuuz.io/blog/2023/06/launching-on-betalist--50-entrepreneurs-share-all/&quot;&gt;Launching On Betalist – 50 Entrepreneurs Share All&lt;/a&gt;”), amounted to a total of more than 50 separate pages, which should be good for the SEO.&lt;/p&gt;
+
+&lt;p&gt;The tricky parts were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;finding out in which country each service was based. This matters, because I need to know what timezone they operate in. Some services do a reset at midnight, or start processing new submissions at 9am, so knowing if they’re in Pacific Standard Time or Indian Standard Time is crucial. E.g. for &lt;a href=&quot;https://www.sideprojectors.com/&quot;&gt;SideProjectors.com&lt;/a&gt; I’m still not sure. Even the Terms and Conditions and Privacy Statement don’t mention a country.&lt;/li&gt;
+  &lt;li&gt;figuring out how ‘important’ each service was. Ideally I need an estimate of monthly traffic (how many visitors might I get through this site) and domain authority of the domain (how valuable are backlinks from this site). But SimilarWeb and Ahrefs don’t give me all the data, unless I take a paid subscription. I get why, but it’s still something I would like to add.&lt;/li&gt;
+  &lt;li&gt;I would love to have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% for page in pages %}&lt;/code&gt; loop in my custom page layout, but a loop that has access to all the page’s metadata, not just the URL and the title. I’m sure there’s a way to do this, but I haven’t found it yet.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now I just need submit the site to all different launch websites. And now it’s easy to know &lt;strong&gt;when&lt;/strong&gt; I should do this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/10/countdown.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Discover new trending music on Spotify</title>
+   <link href="https://blog.forret.com/2024-08-18/spotify-trending-music/"/>
+   <updated>2024-08-18T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024-08-18/trending-music</id>
+   <content type="html">&lt;p&gt;Decades ago, back when I organised the first &lt;a href=&quot;/2006/05/09/barcamp-brussels-10-days-to-go/&quot;&gt;Belgian Barcamp events in Brussels (2006)&lt;/a&gt;, I had a created a presentation of my own: I was scraping the ‘playing now’ feeds of several Belgian radio stations, using that data to detect ‘trending music’, new songs that started being played a lot on radio. I remember that one of the songs that came out of the algorithm was &lt;a href=&quot;https://www.youtube.com/watch?v=-N4jf6rtyuw&quot;&gt;‘Crazy’ by Gnarls Barkley&lt;/a&gt;, and since it was first time I heard that name, I wasn’t even sure how to pronounce it.&lt;/p&gt;
+
+&lt;p&gt;Since this was before GitHub (2008), I have no trace of the code. Since this is before I started working with Laravel 5 (2016), I’m sure it was very ugly. But the idea was there: I wanted to know what was trending in music, and I used the data that was available to me.&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// artist impression of my PHP level back then:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no frameworks,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no composer,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no classes,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no camelcase, and&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no HTTPS :-)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$now_playing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_and_parse_now_playing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://radiostation/widget/nowplaying.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$now_playing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$previous_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;saveSong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$now_playing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$previous_title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$now_playing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;fast-forward-to-2024&quot;&gt;Fast-forward to 2024&lt;/h2&gt;
+
+&lt;p&gt;So now, some 20 years later, I wanted play with the Spotify data and APIs. I collected some dozen Spotify ‘hitparade’ playlists from all different countries, like the one below here, and collected the songs from these playlists in a database.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/08/hothitsbe.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Spotify API gives me the ‘audio features’ of these songs, like ‘danceability’, ‘energy’, ‘key’, ‘loudness’, ‘mode’, ‘speechiness’, ‘acousticness’, ‘instrumentalness’, ‘liveness’, ‘valence’, ‘tempo’, ‘duration_ms’, ‘time_signature’. I use these to describe or categorize the song.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/08/chappellroan.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Spotify API also gives me a ‘&lt;a href=&quot;https://www.artist.tools/features/spotify-popularity-index&quot;&gt;Popularity Index&lt;/a&gt;’ for each song, which is a number between 0 and 100. I only put songs in my database with popularity above 75.
+I ended up with a database with about two thousand songs: &lt;a href=&quot;https://music.toolstud.io/&quot;&gt;&lt;strong&gt;music.toolstud.io&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, for the trending songs, I can select only those that popped up in the last month, with a popularity of at least 80.&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$songs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;remember&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cacheId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$days&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$minPopularity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Song&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;popularity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&amp;gt;=&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$minPopularity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;created_at&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;subDays&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$days&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;orderBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;created_at&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;desc&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This gives me: the &lt;a href=&quot;https://music.toolstud.io/fresh&quot;&gt;Spotify Fresh 12&lt;/a&gt;, the 12 songs that are trending right now.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://music.toolstud.io/fresh&quot;&gt;&lt;img src=&quot;/wp-content/uploads/2024/08/music.toolstudio.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Recording an interview with my parents</title>
+   <link href="https://blog.forret.com/2024/06/22/recording-an-interview-with-my-parents/"/>
+   <updated>2024-06-22T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/06/22/recording-an-interview-with-my-parents</id>
+   <content type="html">&lt;p&gt;This is a personal project of mine: I’ve recently recorded 2 hours of interview with my parents.
+The purpose is to have a record of their life stories, their memories, their anecdotes, told by them.
+The idea came to me when I heard some friends talk about their parents, who had passed away, and how they wished they had recorded their voices, their stories, their laughter.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/interview.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My parents have children that are 50+, grandchildren that are mostly 20+, but also two that are very young still (my 2 youngest: 3y and 5y).
+The video is meant for all of them, and the generations after them.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-setup&quot;&gt;The setup&lt;/h2&gt;
+
+&lt;p&gt;Obviously I didn’t want to worry about the technical side of things during the interview, so I purchased a GoPro HERO 11 camera Creator Edition (Media Mod, Volta grip/battery/tripod). I added the Rode VideoMic GO II for better sound quality, some extra SD cards and some extra batteries.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/gopro11.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When I asked my parents to set this interview up, their first reaction was a bit startled. &lt;em&gt;Are you preparing for our funeral?&lt;/em&gt;  But eventually they agreed. My mom was actually nervous the days before it and prepared by writing a full 8 pages of notes. She didn’t really need those, since finding topics to discuss was easy. The interviewers were my sister and me, and we had prepared some questions, but we also let them talk freely.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;h3 id=&quot;gear&quot;&gt;GEAR&lt;/h3&gt;
+
+&lt;p&gt;In the end, I didn’t really need the extra batteries, nor the extra cards, because the Volta grip has a battery that lasts for 3 hours and a video that long still fits on 1 card. The VideoMic was a good choice, because it cuts out most of the ambient noise and makes the voices much easier to listen to.&lt;/p&gt;
+
+&lt;h3 id=&quot;interview&quot;&gt;INTERVIEW&lt;/h3&gt;
+
+&lt;p&gt;The interview experience was wonderful. They talked about their youth, how they met, their first jobs, their first house, their children. The time flew by, we paused for a while in the middle to eat some of my mom’s signature apple pie, and we stopped after 3 hours. When I came home, I created a quick edit in Apple IMovie, added some titles, and shared it with my sister. 150 minutes of my parents talking passionately about their past. Mission accomplished. I can only recommend it to everyone. It’s quality time with your loved ones and a dear memory in itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;archive&quot;&gt;ARCHIVE&lt;/h3&gt;
+
+&lt;p&gt;Now we just need to make enough cloud and physical backups of the video (22GB full size, 2GB reduced), so that it will still be around in 10-20-50 years. DVDs are not a good option, because already today, we don’t own a DVD-playing device anymore. For now it’s Dropbox and my NAS. I will add some USB sticks later.&lt;/p&gt;
+
+&lt;p&gt;This actually made me wonder if it’s at all possible to create a (private) video URL that is guaranteed to work in 50 years. I guess I’ll have to look into that.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Using A.I. to follow and summarize news</title>
+   <link href="https://blog.forret.com/2024/06/16/ai-news-analysis/"/>
+   <updated>2024-06-16T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/06/16/ai-news-analysis</id>
+   <content type="html">&lt;p&gt;As I’ve &lt;a href=&quot;/2024/05/25/ai-video-quality-control/&quot;&gt;mentioned before&lt;/a&gt;, I am doing a lot of research into using A.I. to facilitate cinema advertising operations. 
+Let me tell you about a recent experiment I did with a movie news analysis tool.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/newsreader.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;In cinema advertising we need to predict with some degree of accuracy the future admissions in the Belgian cinemas. This is called ‘admissions forecasting’.
+In the last decade, I’ve developed a bottom-up model for the belgian cinema market that uses predictions per movie and aggregates this into weekly admissions (per movie, movie type or in total).
+This requires an estimate of total admissions for every movie.&lt;/p&gt;
+
+&lt;p&gt;So what number of admissions does one use for movie X that is released in 3 months? We base this on the past performance of similar movies, and the &lt;em&gt;buzz&lt;/em&gt; around the movie (what people are saying about it).
+To keep track of the buzz, we need to follow the news about movies. This is a time-consuming task, as there are so many movies and so many movie blogs. So I had an idea for a tool that would &lt;strong&gt;keep track of movie news and summarize it&lt;/strong&gt; for me.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/file.critic4..fe240e.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This builds on my &lt;a href=&quot;https://blog.forret.com/portfolio/nuuz_io/&quot;&gt;nuuz.io news aggregator&lt;/a&gt; experience. 
+I keep a list of relevant movie/cinema publications that I want to follow: RSS feeds (from blogs), Subreddits, YouTube (trailer) accounts …
+Every time a new article/video is published, the content is expanded (meaning: if the RSS feed only contains a summary, the full article is fetched).&lt;/p&gt;
+
+&lt;p&gt;Then the text is analyzed with ChatGPT. This allows the extraction of a summary (in English, even if the original article was written in Dutch, French, Italian …), and the overall sentiment (negative = ‘failure/boring/disappointing’ or positive = ‘success/excellent/outstanding/…’. Also detected are the movies, actors and directors that are mentioned in the article.&lt;/p&gt;
+
+&lt;p&gt;For movie trailers we can keep track of the number of views, favourites etc and use this as a measure of anticipation. Like right now: the “&lt;em&gt;Venom: The Last Dance&lt;/em&gt;” trailers from the Sony and Marvel YouTube channels are the most popular trailers of the last month (June). The movie only comes out October 23rd, but the buzz is already there.&lt;/p&gt;
+
+&lt;p&gt;By combining all this info, I can track the buzz for any given movie, based on dozens of articles published about it. For instance, it quickly picked up on the negative vibe around “&lt;em&gt;Furiosa: A Mad Max Saga&lt;/em&gt;” and the positive buzz around “&lt;em&gt;Inside Out 2&lt;/em&gt;”.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Tools:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://laravel.com/&quot;&gt;Laravel&lt;/a&gt; and &lt;a href=&quot;https://nova.laravel.com/&quot;&gt;Nova&lt;/a&gt; for (fast) application development&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/simplepie/simplepie&quot;&gt;SimplePie&lt;/a&gt; for RSS feed parsing&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/pforret/pf-article-extractor&quot;&gt;pforret/pf-article-extractor&lt;/a&gt; for article expansion&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://openai.com/chatgpt/&quot;&gt;ChatGPT&lt;/a&gt; for text analysis via &lt;a href=&quot;https://github.com/openai-php/laravel&quot;&gt;openai-php/laravel&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The tool is still in development, but it already shows promise. It’s like an intern reading over 1000 movie articles a week and distilling the essence.
+I am also investigating how to factor in IMDB Score, Rotten Tomatoes rating, Metacritic score, … to get a more complete picture of the buzz around a movie.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Using A.I. for video quality control</title>
+   <link href="https://blog.forret.com/2024/05/25/ai-video-quality-control/"/>
+   <updated>2024-05-25T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/05/25/ai-video-quality-control</id>
+   <content type="html">&lt;p&gt;I’m doing lots of research these days on using A.I. (generative or other) in the daily operations of cinema advertising, which is my area of expertise.
+Let me tell you about one topic I recently explored: using artificial intelligence models to help in video quality control.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/videoqc.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;Cinema advertising requires videos to be converted to the DCP format. Before starting the conversion, we do some technical quality checks on the input video, like the resolution, framerate, compression, audio levels. Once the DCP has been created, we also need to check the content before we can send it to the cinemas. This is where this quality control comes in.&lt;/p&gt;
+
+&lt;p&gt;Specifically we want to &lt;strong&gt;check the content quality&lt;/strong&gt;. We want to detect things like&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;wrong language (e.g. French spoken audio when we expect Dutch spoken, Dutch subtitles when we expect French subtitles)&lt;/li&gt;
+  &lt;li&gt;sensitive content (nudity, kissing, violence, smoking, drugs &amp;amp; alcohol consumption, …)&lt;/li&gt;
+  &lt;li&gt;unexpected additional logos or brand names&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;For this, I could use the experience I had from working on &lt;a href=&quot;/2023/12/01/printthatvideo/&quot;&gt;printthatvideo.com&lt;/a&gt;. I used a similar approach to transcribe the audio of the video (using &lt;a href=&quot;https://deepgram.com/&quot;&gt;Deepgram&lt;/a&gt;) and then use A.I. to analyze the text and detect the spoken language. I also used video transcription to detect subtitles and check the language(s) used there. This solved the language detection part.&lt;/p&gt;
+
+&lt;p&gt;There are also A.I. models available that can detect nudity, violence, etc. in images. I wouldn’t say they are good enough yet. Explicit nudity in (cinema) advertising is not really common, and it detected some false positives. Detection of kissing was useful (because in some cases, that can be perceived as ‘&lt;em&gt;too much&lt;/em&gt;’ for a young public). Violence detection was not that accurate either.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Tools:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://laravel.com/&quot;&gt;Laravel&lt;/a&gt; and &lt;a href=&quot;https://nova.laravel.com/&quot;&gt;Nova&lt;/a&gt; for (fast) application development&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://ffmpeg.org/&quot;&gt;ffmpeg&lt;/a&gt; for audio/video extraction and compression&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://deepgram.com/&quot;&gt;Deepgram&lt;/a&gt; for audio transcription via &lt;a href=&quot;https://www.edenai.co/&quot;&gt;EdenAI.co&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://openai.com/chatgpt/&quot;&gt;ChatGPT&lt;/a&gt; for text analysis (language detection) via &lt;a href=&quot;https://github.com/openai-php/laravel&quot;&gt;openai-php/laravel&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/file.spottixa.d6426e.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The logo and brand detection was interesting, the A.I. recognizes more than I could do by just looking at the video. The big static logos/pack shots are easy to spot, but when there was a camera pan in a shopping street, it picked up more brands from shop windows than I could ever do.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;For the language detection, which is a typical Belgian problem, A.I. is a clear game changer. We will be able to avoid language-based mistakes in the future.&lt;/p&gt;
+
+&lt;p&gt;For the video content detection, it’s a bit more tricky. The A.I. models have too many false positives and false negatives, so there still needs to be a human check. But for early detection of possibly problematic content, this could help.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Mirroring Unifi installer scripts with Bashew and GitHub Actions</title>
+   <link href="https://blog.forret.com/2024/05/19/unifi-mirror-bashew-github/"/>
+   <updated>2024-05-19T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/05/19/mirrorring-with-bashew-github-actions</id>
+   <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;TL;DR: I decided to &lt;a href=&quot;https://github.com/pforret/glennr-unifi&quot;&gt;mirror the installation scripts for Unifi network controllers&lt;/a&gt; on GitHub using Bashew and GitHub Actions. Skip to the &lt;a href=&quot;#here&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;here&lt;/code&gt; marker&lt;/a&gt; to see the steps.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/pforret/glennr-unifi&quot;&gt;&lt;img src=&quot;https://github.com/pforret/glennr-unifi/raw/main/assets/logo.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I recently upgraded my Ubiquiti Wi-Fi installation to the Cloud Key Gen 2. The old Cloud Key 1 was obsolete, and I was no longer able to manage the settings of my home Wi-Fi network. I had thought the upgrade would be straightforward, but the Cloud Key ships without a power supply, and doesn’t accept just any USB power. It needs to be QuickCharge compatible. The first one I ordered was high power (2A) but I found out that’s not the same as QuickCharge.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Quick Charge is a proprietary technology that can charge battery-powered devices, primarily mobile phones, at power levels exceeding the 7.5 watts (5 volts at 1.5 amps) supported by the USB BC 1.2 standard, using existing USB cables. (…) Quick Charge requires both the power supply and the device being charged to support it, otherwise charging falls back to the standard USB ten watts.
+• via &lt;a href=&quot;https://en.wikipedia.org/wiki/Quick_Charge&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Since I had to wait for the second power supply to arrive, I investigated what other ways there would be to manage my Unifi network. There are some hosted controllers SaaS options:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://eu.store.ui.com/eu/en/collections/unifi-accessory-tech-hosting-and-gateways-cloud/products/unifi-hosting&quot;&gt;Ubiquiti&lt;/a&gt;: &amp;gt; 29€/mon&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hostifi.com/#pricing&quot;&gt;Hostify&lt;/a&gt;: &amp;gt; 99$/mon&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.unihosted.com/#pricing&quot;&gt;Unihosting&lt;/a&gt;: free for 1 site and &amp;lt;= 5 devices).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But I had already purchased the Cloud Key Gen 2, and I didn’t want to pay a monthly fee.
+Then I considered using a Raspberry Pi to create a controller, the pure DIY route. I had a Raspberry Pi 3B+ lying around, and I could use it to run the controller software.&lt;/p&gt;
+
+&lt;p&gt;It struck me how amateuristic the &lt;a href=&quot;https://community.ui.com/questions/UniFi-Installation-Scripts-or-UniFi-Easy-Update-Script-or-UniFi-Lets-Encrypt-or-UniFi-Easy-Encrypt-/ccbc7530-dd61-40a7-82ec-22b17f027776&quot;&gt;DIY part of the Ubiquiti Unifi ecosystem&lt;/a&gt; was. There are installation scripts available, but they are not maintained by Ubiquiti. They are developed by Glenn Rietveld (from the Netherlands, I think he’s a Ubiquiti employee), and it’s not hosted on GitHub, but on his personal website &lt;a href=&quot;https://glennr.nl/scripts&quot;&gt;glennr.nl&lt;/a&gt;. No versioning, no deltas, no history.&lt;/p&gt;
+
+&lt;p&gt;I thought that was odd, and I decided to mirror the scripts on GitHub, for science and to check how fast I could do it with a &lt;a href=&quot;https://github.com/pforret/bashew&quot;&gt;bashew&lt;/a&gt; bash script.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-mirroring-script-pforretglennr-unifi&quot;&gt;&lt;a name=&quot;here&quot; href=&quot;https://github.com/pforret/glennr-unifi&quot;&gt;Creating a mirroring script: pforret/glennr-unifi&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-create-the-script-template&quot;&gt;1. create the script template&lt;/h3&gt;
+
+&lt;p&gt;I start by creating a new script with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bashew script&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;⏳  1. first we need the information of the author
+Author full name         (pforret) &amp;gt; Peter Forret
+Author email             (peter@forret.com) &amp;gt; peter@forret.com
+Author (github) username (pforret) &amp;gt; 
+⏳  2. now we need the path and name of this new script/repo
+Script name (./edifies_endorse.sh) &amp;gt; glennr-unifi.sh
+⏳  3. give some description of what the script should do
+Script description (This is my script glennr-unifi) &amp;gt; sync all scripts from glennr.nl
+⏳  Creating script glennr-unifi.sh ...
+glennr-unifi.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Just like that, the script already has the following functionality:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Program : glennr-unifi.sh  by peter@forret.com
+Version : v0.0.1 (May 19 15:12:54 2024)
+Purpose : sync all scripts from glennr.nl
+Usage   : glennr-unifi.sh [-h] [-Q] [-V] [-f] [-L &amp;lt;LOG_DIR&amp;gt;] [-T &amp;lt;TMP_DIR&amp;gt;] &amp;lt;action&amp;gt; &amp;lt;input?&amp;gt;
+Flags, options and parameters:
+-h|--help        : [flag] show usage [default: off]
+-Q|--QUIET       : [flag] no output [default: off]
+-V|--VERBOSE     : [flag] also show debug messages [default: off]
+-f|--FORCE       : [flag] do not ask for confirmation (always yes) [default: off]
+-L|--LOG_DIR &amp;lt;?&amp;gt; : [option] folder for log files   [default: /Users/pforret/log/glennr-unifi]
+-T|--TMP_DIR &amp;lt;?&amp;gt; : [option] folder for temp files  [default: /tmp/glennr-unifi]
+&amp;lt;action&amp;gt;         : [choice] action to perform  [options: action1,action2,check,env,update]
+&amp;lt;input&amp;gt;          : [parameter] input file/text (optional)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now I open the script for editing (I use PHPStorm) and&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I replace all occurrences of ‘action1’ with ‘get’&lt;/li&gt;
+  &lt;li&gt;remove all mentions of action2, since I won’t need them&lt;/li&gt;
+  &lt;li&gt;also remove the &amp;lt;input&amp;gt; parameter, since I don’t need it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This gives me the usage I expected:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Usage   : glennr-unifi.sh &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &amp;lt;LOG_DIR&amp;gt;] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-T&lt;/span&gt; &amp;lt;TMP_DIR&amp;gt;] &amp;lt;action&amp;gt;
+Flags, options and parameters:
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;...&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&amp;lt;action&amp;gt;         : &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;choice] action to perform  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;options: get,check,env,update]
+
+&lt;span class=&quot;c&quot;&gt;### TIPS &amp;amp; EXAMPLES&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; use glennr-unifi get to get all Unifi scripts from glennr.nl
+  glennr-unifi get
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-add-the-code-to-download-the-scripts&quot;&gt;2. add the code to download the scripts&lt;/h3&gt;
+
+&lt;p&gt;There is one page per type of scripts (controller/ video/ ) with all the links to the .sh files. So I need to process each of those 7 pages and download the files. 
+I will use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget&lt;/code&gt; to &lt;em&gt;download&lt;/em&gt; the files (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; would have worked too) to stdout, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;awk&lt;/code&gt; to perform a combination of &lt;em&gt;search and parse&lt;/em&gt; (could have been a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep | cut&lt;/code&gt; too) and a bash &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while read; do&lt;/code&gt; loop to &lt;em&gt;extract and download&lt;/em&gt; the URLs from the HTML.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;download_from_glennr&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  Os:require &lt;span class=&quot;s2&quot;&gt;&quot;wget&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;file
+  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  wget &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; - 2&amp;gt;/dev/null |
+    &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;&apos;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/get.glennr.nl/ {print $2}&apos;&lt;/span&gt; |
+    &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; url&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue
+      &lt;/span&gt;IO:progress &lt;span class=&quot;s2&quot;&gt;&quot;Download &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      wget &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-nd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# I can then download the pages ones by one like this&lt;/span&gt;
+download_from_glennr &lt;span class=&quot;s2&quot;&gt;&quot;https://glennr.nl/s/unifi-network-controller&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./scripts/controller&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This works like a charm. I can now download all the scripts from the 7 pages with a simple loop.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-add-the-code-to-check-in-updates&quot;&gt;3. add the code to check in updates&lt;/h3&gt;
+
+&lt;p&gt;If there was an update to any of the scripts, it would overwrite the previous version that was already savec in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./scripts&lt;/code&gt;, and this will be picked up by git. I now just need to check for changes and do a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit &amp;amp;&amp;amp; git push&lt;/code&gt; if there are any. To make things even easier, I want a procedure that can run as a GitHub action that I can trigger on a dail/weekly basis.&lt;/p&gt;
+
+&lt;p&gt;Luckily &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bashew&lt;/code&gt; &lt;a href=&quot;https://blog.forret.com/2022/10/15/bashew-github-action/&quot;&gt;has a built-in function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gha:finish&lt;/code&gt; for that&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;git diff &lt;span class=&quot;nt&quot;&gt;--QUIET&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--cached&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;IO:success &lt;span class=&quot;s2&quot;&gt;&quot;No changes!                                &quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else
+  &lt;/span&gt;IO:success &lt;span class=&quot;s2&quot;&gt;&quot;Updating changes ...                       &quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;RUNNER_OS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# not in GitHub Action&lt;/span&gt;
+    setver auto &lt;span class=&quot;c&quot;&gt;# uses pforret/setver, which I have installed on all my machines&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# in GitHub Action&lt;/span&gt;
+    Gha:finish &lt;span class=&quot;c&quot;&gt;# uses internal bashew function&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi
+fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And that’s it. I’ve decided on a daily schedule for now: &lt;a href=&quot;https://github.com/pforret/glennr-unifi/actions/workflows/daily.yml&quot;&gt;&lt;img src=&quot;https://github.com/pforret/glennr-unifi/actions/workflows/daily.yml/badge.svg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# .github/workflows/daily.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Daily Update&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cron&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v4&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Get latest versions from glennr.nl&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./glennr-unifi.sh get&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Fastest way to set up and manage an Mkdocs Material project</title>
+   <link href="https://blog.forret.com/2024/03/09/mkdox-mkdocs-material-docker/"/>
+   <updated>2024-03-09T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/03/09/mkdox</id>
+   <content type="html">&lt;p&gt;If I wouldn’t be able to control myself, I would create a new website every week. Creating a website about … any topic really, helps me structure the knowledge I have or am in the process of collecting about it. The tools to create a new website have changed through the years. There was my Blogger period, my WordPress period, my &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; period. And now I am in my &lt;a href=&quot;https://www.mkdocs.org/&quot;&gt;Mkdocs&lt;/a&gt; period.&lt;/p&gt;
+
+&lt;p&gt;Not the vanilla mkdocs, mind you. I am using the &lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/&quot;&gt;Material for MkDocs&lt;/a&gt; theme. It’s a beautiful theme, with a lot of plugins and extensions, and it’s very easy to use. It felt like an upgrade from Jekyll: auto-reload upon edit, very fast and it just works. The times I’ve struggled to get ‘&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;’ or ‘&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;’ running …&lt;/p&gt;
+
+&lt;p&gt;The process of setting up a new Mkdocs project was still too slow and cumbersome. So I decided to make a bash script to make things easier and faster: introducing &lt;a href=&quot;https://github.com/pforret/mkdox&quot;&gt;&lt;strong&gt;pforret/mkdox&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/pforret/mkdox/raw/master/assets/unsplash.documents.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-create-new-bashew-script&quot;&gt;1. create new &lt;a href=&quot;/tag/bashew/&quot;&gt;bashew&lt;/a&gt; script&lt;/h2&gt;
+
+&lt;p&gt;I start by creating a new script with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bashew script&lt;/code&gt;. To make things very portable (I don’t want to worry about which version of Python is installed on my system), I started looking into using a Docker-based approach. Luckily there was already a basic Docker image for Mkdocs available on &lt;a href=&quot;https://hub.docker.com/r/squidfunk/mkdocs-material&quot;&gt;Docker Hub&lt;/a&gt;. I used this as a basis and I &lt;a href=&quot;https://github.com/pforret/mkdox-material&quot;&gt;added more default plugins and settings&lt;/a&gt; to it.&lt;/p&gt;
+
+&lt;p&gt;This means I require Docker to be installed and running on my system. I added a check for this at the start of my script:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &amp;amp;&amp;gt;/dev/null &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; IO:die &lt;span class=&quot;s2&quot;&gt;&quot;Docker is not installed or not yet started&quot;&lt;/span&gt;
+docker ps &amp;amp;&amp;gt;/dev/null &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; IO:die &lt;span class=&quot;s2&quot;&gt;&quot;Docker is not yet started&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I added some plugins to the Docker image with&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install --no-cache-dir \
+  weasyprint \
+  mkdocs-material[recommended] \
+  mkdocs-material[imaging] \
+  mkdocs-awesome-pages-plugin \
+  mkdocs-with-pdf \
+  markdown-include ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-add-basic-commands&quot;&gt;2. add basic commands&lt;/h2&gt;
+
+&lt;h3 id=&quot;mkdox-new&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox new&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Purpose: create a new website with all the plugins and settings I need&lt;/li&gt;
+  &lt;li&gt;The actual creation of the mkdocs site is done by the mkdocs Docker image. I created a template website I always copy, with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdocs.yml&lt;/code&gt; file that contains all the settings I need for a new website. This is copied automatically to the new project folder. Setup of a new site: less than 2 seconds.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;⏳  Create new Mkdocs Material project &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;example
+Run &lt;span class=&quot;s1&quot;&gt;&apos;mkdocs new&apos;&lt;/span&gt; via Docker
+INFO    -  Writing config file: example/mkdocs.yml
+INFO    -  Writing initial docs: example/docs/index.md
+Create mkdocs.yml ...
+Create docs/about/extensions.md ...
+Create docs/about/index.post ...
+Create docs/about/plugins.md ...
+Create docs/about/index.pre ...
+Create docs/news/posts/2024-02-post2.md ...
+Create docs/news/posts/2024-01-post1.md ...
+Create docs/news/index.md ...
+Create docs/index.md ...
+Create .gitignore ...
+✅  New Mkdocs Material project created &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;example&apos;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# took 2s to create&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mkdox-serve&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox serve&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;so now you just go into that folder that you just created above and run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox serve&lt;/code&gt; and you have a local server running with auto-reload. This also automatically starts your browser with the right URL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WARNING -  Config value &lt;span class=&quot;s1&quot;&gt;&apos;dev_addr&apos;&lt;/span&gt;: The use of the IP address &lt;span class=&quot;s1&quot;&gt;&apos;0.0.0.0&apos;&lt;/span&gt; suggests a production environment or the use of a proxy to connect to the MkDocs server. However, the MkDocs&lt;span class=&quot;s1&quot;&gt;&apos; server is intended for local development purposes only. Please use a third party production-ready server instead.
+INFO    -  Building documentation...
+WARNING -  without generate PDF(set environment variable ENABLE_PDF_EXPORT to 1 to enable)
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 0.39 seconds                                             
+INFO    -  [15:56:01] Watching paths for changes: &apos;&lt;/span&gt;docs&lt;span class=&quot;s1&quot;&gt;&apos;, &apos;&lt;/span&gt;mkdocs.yml&lt;span class=&quot;s1&quot;&gt;&apos;
+INFO    -  [15:56:01] Serving on http://0.0.0.0:8000/
+Open http://localhost:8000 in browser (macOS)
+INFO    -  [15:56:08] Browser connected: http://localhost:8000/
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is what that looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/mkdocs.png&quot; alt=&quot;img.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;mkdox-build&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox build&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The purpose of a website is that it becomes available online at some point. So I added a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox build&lt;/code&gt; command that builds the website to a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site&lt;/code&gt; folder, and then checks this in. This is the folder you can then serve from your web server.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# in the beginning this was just &lt;/span&gt;
+mkdocs build
+git add docs site
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$MESSAGE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;But this became a much more intelligent command later on.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-add-more-features&quot;&gt;3. add more features&lt;/h2&gt;
+
+&lt;h3 id=&quot;mkdox-post&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox post&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;I use the &lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/plugins/blog/&quot;&gt;blog plugin for Mkdocs Material&lt;/a&gt;, so I created a fast way to create a new blog post.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ mkdox post
+Post date (2024-03-09) &amp;gt;
+Post title (New post) &amp;gt; My new blog on waffles
+Post categories (blog,post) &amp;gt; news,waffles
+✅  New post created: docs/news/posts/2024-03-09-my-new-blog-.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;mkdox-toc-and-indexpreindexpost&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox toc&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.pre&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.post&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;I often thought it would be handy to have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.md&lt;/code&gt; files that were automatically built with the links to the subpages. So I developed a system to do this.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I can do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox toc&lt;/code&gt; to manually generate a table of contents for a folder&lt;/li&gt;
+  &lt;li&gt;I can do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox recent&lt;/code&gt; to manually generate a list of the most recent pages&lt;/li&gt;
+  &lt;li&gt;I can add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.pre&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.post&lt;/code&gt; files to a folder, and these will be prepended and appended to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.md&lt;/code&gt; file, which will be generated automatically as a table-of-contents when I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox build -I&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;this led to more development of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdox build&lt;/code&gt; command: create index.md files, create PDf version, create site, commit and push site.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;So I can now start up a new website in seconds. Creating a GitHub/BitBucket repo to store it, setting up new a &lt;a href=&quot;https://forge.laravel.com/&quot;&gt;Forge&lt;/a&gt; website that automatically publishes after a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt;: maybe another 5 minutes.&lt;/p&gt;
+
+&lt;p&gt;Then there’s still the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdocs.yml&lt;/code&gt; file that I need to adjust for each new project. That’s something I do in a text editor.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;site_name: &quot;{SITE_NAME}&quot;
+site_description: &quot;{SITE_NAME} by {USERNAME}&quot;
+theme:
+    name: material
+    palette:
+        primary: red
+    font:
+        text: Nunito
+copyright: &quot;&amp;amp;copy; {CREATION_YEAR} {SITE_NAME} &amp;amp;bull; {USERNAME}&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Version : v0.4.0 (Mar  9 13:17:55 2024)
+Purpose : easy wrapper for Material Mkdocs in Docker mode
+Usage   : mkdox [-h] [-q] [-v] [-f] [-G] [-I] [-Q] [-R] [-T] [-X] [-l &amp;lt;log_dir&amp;gt;] [-t &amp;lt;tmp_dir&amp;gt;] [-D &amp;lt;DOCKER&amp;gt;] [-E &amp;lt;TITLE&amp;gt;] [-H &amp;lt;HISTORY&amp;gt;] [-L &amp;lt;LENGTH&amp;gt;] [-P &amp;lt;PORT&amp;gt;] [-S &amp;lt;SECS&amp;gt;] &amp;lt;action&amp;gt; &amp;lt;input?&amp;gt; &amp;lt;output?&amp;gt;
+Flags, options and parameters:
+-h|--help        : [flag] show usage [default: off]
+-q|--quiet       : [flag] no output [default: off]
+-v|--verbose     : [flag] also show debug messages [default: off]
+-f|--force       : [flag] do not ask for confirmation (always yes) [default: off]
+-G|--GITPUSH     : [flag] push to git after commit [default: off]
+-I|--INDEX       : [flag] build index.md if index.pre/.post present (for mkdox build) [default: off]
+-Q|--SHORT       : [flag] include short contents of page (for mkdox toc) [default: off]
+-R|--RECURSIVE   : [flag] also list subfolders (for mkdox toc) [default: off]
+-T|--TREE        : [flag] list as tree (for mkdox toc) [default: off]
+-X|--EXPORT      : [flag] export to PDF (for mkdox build) [default: off]
+-l|--log_dir &amp;lt;?&amp;gt; : [option] folder for log files   [default: /Users/pforret/log/mkdox]
+    -t|--tmp_dir &amp;lt;?&amp;gt; : [option] folder for temp files  [default: /tmp/mkdox]
+-D|--DOCKER &amp;lt;?&amp;gt;  : [option] docker image to use  [default: pforret/mkdox-material]
+    -E|--TITLE &amp;lt;?&amp;gt;   : [option] set site title
+-H|--HISTORY &amp;lt;?&amp;gt; : [option] days to take into account for mkdox recent  [default: 7]
+    -L|--LENGTH &amp;lt;?&amp;gt;  : [option] max commit message length  [default: 99]
+-P|--PORT &amp;lt;?&amp;gt;    : [option] http port for serve  [default: 8000]
+    -S|--SECS &amp;lt;?&amp;gt;    : [option] seconds to wait for launching a browser  [default: 10]
+&amp;lt;action&amp;gt;         : [choice] action to perform  [options: new,serve,post,build,recent,toc,check,env,update]
+&amp;lt;input&amp;gt;          : [parameter] input folder name (optional)
+&amp;lt;output&amp;gt;         : [parameter] output file name (optional)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Authentic images in the age of A.I.</title>
+   <link href="https://blog.forret.com/2024/01/29/authentic_ai/"/>
+   <updated>2024-01-29T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2024/01/29/photorealism-in-the-age-of-a-i</id>
+   <content type="html">&lt;h2 id=&quot;paris-is-burning&quot;&gt;Paris is burning&lt;/h2&gt;
+
+&lt;p&gt;You might have seen this photo of the Eiffel Tower on fire. It is a fake, used by the Australian A. James (no link, on purpose) who uses content like this to ‘prove’ that western society is on the brink of collapse, and we need to accept his far-right views to save ourselves.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/01/file.eiffel_b.b5f8c0.jpg&quot; alt=&quot;published on X/Twitter on July 2023&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;More recently, there was a controversy about a &lt;strong&gt;video&lt;/strong&gt; that also showed the Eiffel Tower on fire. This video, which was &lt;a href=&quot;https://www.youtube.com/watch?v=BY9ZBk96-5E&quot;&gt;originally created&lt;/a&gt; as a demo of visual effects, was also used by far-right groups to spread disinformation.&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https://www.youtube-nocookie.com/embed/BY9ZBk96-5E?si=xKKk7EuRsjMlEgvp&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In a presentation I did over a year ago, I predicted that the emergence of generative A.I. meant that we could no longer trust what we saw on photos or videos. It was the end of “&lt;em&gt;pics or it didn’t happen&lt;/em&gt;”. In a world where any image or video can be fake, how can we trust what we see?&lt;/p&gt;
+
+&lt;h2 id=&quot;signed-content&quot;&gt;Signed content&lt;/h2&gt;
+
+&lt;p&gt;That’s why I also foresaw that &lt;strong&gt;signed content&lt;/strong&gt; would become a requirement for places where authenticity was very important, like news-gathering and legal procedures. A secure digital signature means that the content cannot be tampered with without breaking the signature.&lt;/p&gt;
+
+&lt;p&gt;In the case of photo and video capture, this means that the capturing device has to be able to digitally sign the generated files.  I was wondering what technology is already here for this.&lt;/p&gt;
+
+&lt;h2 id=&quot;content-credentials&quot;&gt;&lt;a href=&quot;https://contentcredentials.org/&quot;&gt;Content Credentials&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Content Credentials is a new way to prove the authenticity of your photos. It is a simple, free, and open source tool that lets you add a digital signature to your photos. This signature is a cryptographic hash that can be used to prove that the photo was taken by you and has not been altered since it was signed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2024/01/contentcredentials.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was created by the Coalition for Content Provenance and Authenticity (&lt;a href=&quot;https://c2pa.org/&quot;&gt;C2PA&lt;/a&gt;), which unifies the efforts of the Adobe-led &lt;strong&gt;Content Authenticity Initiative&lt;/strong&gt; (CAI) which focuses on systems to provide context and history for digital media, and &lt;strong&gt;Project Origin&lt;/strong&gt;, a Microsoft- and BBC-led initiative that tackles disinformation in the digital news ecosystem.&lt;/p&gt;
+
+&lt;p&gt;The first cameras to use this technology were the high-end &lt;a href=&quot;https://nikonrumors.com/2022/10/18/adobe-announced-partnership-with-nikon-to-add-provenance-and-content-authenticity-at-the-point-of-capture-for-the-z9-camera.aspx/&quot;&gt;&lt;strong&gt;Nikon Z9&lt;/strong&gt;&lt;/a&gt; (6000€) and the top-end &lt;a href=&quot;https://www.zdnet.com/article/this-new-camera-embeds-authenticity-details-in-photos-but-it-doesnt-come-cheap/&quot;&gt;&lt;strong&gt;Leica M11-P&lt;/strong&gt;&lt;/a&gt; (9000€).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On Thursday, Leica dropped the Leica M11-P, the world’s first camera to have Content Credentials built in, which enables a picture to have detailed metadata included at the point of capture and essentially serves as a verification stamp for the image.
+The metadata includes details such as the camera make and model, who captured the image, and when and how the image was captured (…).&lt;/p&gt;
+
+  &lt;p&gt;ZDNET, 2023-10-27&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Also, Sony will start selling cameras with Content Credentials, the Sony Alpha 1, Alpha 9III, Alpha 7S III.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sony and AP’s most recent field test was completed during October of 2023. In this month-long test, both capture authentication and workflow process were evaluated. To accomplish this, Sony partnered with Camera Bits – the company behind the industry standard workflow tool, Photo Mechanic. Alongside Sony and AP, Camera Bits created technology in Photo Mechanic that preserves the camera’s digital signature all the way through the metadata editing process.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://photorumors.com/2023/11/28/after-nikon-and-leica-sony-will-also-be-getting-content-authenticity-technology/&quot;&gt;photorumors.com&lt;/a&gt;, 2023-11-28&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How not to suck at Supercharging</title>
+   <link href="https://blog.forret.com/2023/12/28/tesla-supercharger/"/>
+   <updated>2023-12-28T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2023/12/28/how-to-not-suck-at-supercharging</id>
+   <content type="html">&lt;p&gt;A recent trip to the U.K. showed me the reality of &lt;a href=&quot;https://www.tesla.com/en_eu/support/non-tesla-supercharging#selected-countries&quot;&gt;opening the Supercharger network to non-Tesla cars&lt;/a&gt;. I hadn’t really seen much of that in Belgium yet, but then I don’t use the Superchargers a lot when I’m close to home. The occupation rate of the stations I tried in the U.K. was higher than before (2021-2022), with anywhere from 25% to 75% of the stalls occupied by other brands. And that is not without its challenges.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/unsplash.supercharger.jpg&quot; alt=&quot;Charge Port Position&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;The Supercharger network was designed for Tesla cars. All Tesla cars have their charge port on the Rear Left (RL) position of the car. There is no doubt how the car is best positioned to charge, since there’s only one that works. So there’s also no confusion about which charging station to use. It’s the only one that’s close enough to the charge port, since the Supercharger cables are typically short.&lt;/p&gt;
+
+&lt;p&gt;Other brands have not followed the same logic. There are five common positions for the charge port on other brands: rear left &amp;amp; right, front left &amp;amp; right, and front center. &lt;strong&gt;Only three of those work well&lt;/strong&gt; with the design of a typical Supercharger. Two of them don’t.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Charge Port Position&lt;/th&gt;
+      &lt;th&gt;🙂 Supercharger&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Rear Left (RL)&lt;/td&gt;
+      &lt;td&gt;✅ Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Rear Right (RR)&lt;/td&gt;
+      &lt;td&gt;❌ No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Front Center (FC)&lt;/td&gt;
+      &lt;td&gt;✅ Yes (if the cable is long enough)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Front Left (FL)&lt;/td&gt;
+      &lt;td&gt;❌ No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Front Right (FR)&lt;/td&gt;
+      &lt;td&gt;✅ Yes&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now check out this list of common EV vehicles. Can you spot the problem?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/charge-port.png&quot; alt=&quot;Charge Port Position&quot; /&gt;
+source: &lt;a href=&quot;https://www.gridserve.com/2023/03/06/where-is-the-charge-port-on-my-electric-car/#:~:text=However%2C%20it&apos;s%20actually%20more%20likely,you&apos;ll%20have%20easy%20access.&quot;&gt;gridserve.com&lt;/a&gt;
+– missing from this list: Chinese brands like BYD, Lynk&amp;amp;Co (Geely), HiPhi, Zeekr&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That’s right. Lots of popular EV cars from BMW, Jaguar, Mercedes, Porsche and Volkswagen have their charge port on the &lt;strong&gt;wrong side&lt;/strong&gt; for correct usage at a Supercharger. If they park their car on slot #1 to charge, they will not use the charger of slot #1, they will use that of slot #2. If a Tesla then arrives into slot #2 to charge, they will have no charge cable for slot #2 available, &lt;strong&gt;so they cannot charge&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;Here are some possible solutions to this problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;change-supercharger-layout&quot;&gt;Change Supercharger layout&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;change all Superchargers to have the charger in the middle of the slot (so no more confusion about which one to use) and a cable long enough to reach any L/C/R position. → 👎 (installed base: &amp;gt;50K Superchargers – too expensive)&lt;/li&gt;
+  &lt;li&gt;add extra charging RR/FL-only slots to every Supercharger station, and force RR/FL cars to charge there → 👎 (installed base: &amp;gt;50K Superchargers – too expensive)&lt;/li&gt;
+  &lt;li&gt;longer charge cables and a clear indication on what charger to use → 👍 (not cheap, but realistic)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reconsider-the-open-for-all-policy&quot;&gt;Reconsider the open-for-all policy&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;only allow FR/FC/RL electric cars to charge at Superchargers → 👎 (cheapest and easiest solution, but &lt;em&gt;oh my&lt;/em&gt; the consumer backlash)&lt;/li&gt;
+  &lt;li&gt;obligatory training for all new non-Tesla EV owners on how to use a Supercharger → 😏 (cheapest fix, but traumatising)&lt;/li&gt;
+  &lt;li&gt;force all EV vendors to only use FR/FC/RL charge port position → 👎 (never going to happen)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;do-nothing&quot;&gt;Do nothing&lt;/h3&gt;
+
+&lt;p&gt;This seems to be the strategy followed at the moment. Just let the drivers fight it out. Strictly speaking this is a bait-and-switch strategy. Part of the appeal of buying a Tesla was the abundant, affordable and excellent Supercharging network. The ‘excellent’ aspect will now be diluted by excessive and potentially anti-social charging by other brands.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I’m aware it’s a first world problem. But this is the situation as it is today:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tesla, Polestar, Volvo, Renault: you’re always welcome at the Superchargers. We’re all equals here. The Tesla drivers, of course,  are like … superior equals, but still equals.&lt;/li&gt;
+  &lt;li&gt;BMW, Hyundai, Kia, Mercedes, Škoda, Volkswagen, Porsche, Jaguar, Ford Mustang …: you can charge at the Superchargers, but you might be yelled at. It’s maybe not entirely your fault, but still a little bit. You should have asked if your car was Supercharger-compatible. You should have asked yourself at least “&lt;em&gt;but where will I charge my car?&lt;/em&gt;”.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;elsewhere-on-the-web&quot;&gt;Elsewhere on the web&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“It looks like Tesla is already aware of the situation because it is working on a new generation of its charging station, Supercharger V4, which appears to have a much longer cable.”
+&lt;img src=&quot;/wp-content/uploads/2023/12/tesla-error.png&quot; alt=&quot;Jaguar blocking a Tesla&quot; /&gt;
+&lt;a href=&quot;https://electrek.co/2022/12/13/tesla-opening-its-superchargers-to-other-evs-is-creating-a-weird-problem/&quot;&gt;electrek.co&lt;/a&gt; via &lt;a href=&quot;https://www.reddit.com/r/teslamotors/comments/zkwxsf/what_happens_when_you_open_up_the_charging/?utm_source=share&amp;amp;utm_medium=mweb3x&amp;amp;utm_name=post_embed&amp;amp;utm_term=1&amp;amp;utm_content=1&quot;&gt;reddit.com/r/teslamotors&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Serious investments and a new Supercharging layout appear to be the only cure if the network were to be open for all.”
+&lt;img src=&quot;/wp-content/uploads/2023/12/supercharger-wrong.png&quot; alt=&quot;Wrong side&quot; /&gt;
+via &lt;a href=&quot;https://insideevs.com/news/545500/nontesla-evs-blocks-tesla-superchargers/&quot;&gt;insideevs.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Practically speaking, us being plugged in on the “wrong side” with our EV6 makes one of the charging spaces useless for a Tesla owner who may come along”
+&lt;img src=&quot;/wp-content/uploads/2023/12/kia-ev6.png&quot; alt=&quot;Kia EV6&quot; /&gt;
+via &lt;a href=&quot;https://www.autoblog.com/2023/03/27/charging-a-non-tesla-on-a-tesla-supercharger-long-term-kia-ev6/&quot;&gt;autoblog.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Now I Can Just Print That Video</title>
+   <link href="https://blog.forret.com/2023/12/01/printthatvideo/"/>
+   <updated>2023-12-01T21:49:04+00:00</updated>
+   <id>https://blog.forret.com/2023/12/01/nowi-can-just-print-that-video</id>
+   <content type="html">&lt;p&gt;It all started with Instagram Reels showing me too many yummy cooking videos. I wanted to try some recipes out myself. 
+But I didn’t want to have to keep my phone in the kitchen, and I didn’t want to have to keep unlocking it to see the next step. 
+I wanted to print the recipe out, and have it on the counter while I was cooking. 
+Wouldn’t it be cool if I could just &lt;strong&gt;print that video&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TL;DR: I am making a &lt;a href=&quot;https://printthatvideo.com&quot;&gt;web service to print that video&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/url.download.339f88.jpg&quot; alt=&quot;PrintThatVideo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Surely the current state of A.I. services should make this within reach. Let’s see what we need.&lt;/p&gt;
+
+&lt;p&gt;Where is the relevant information in a cooking video?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sometimes it is posted as the body text with the video.&lt;/li&gt;
+  &lt;li&gt;Sometimes it is narrated by a voiceover.&lt;/li&gt;
+  &lt;li&gt;Sometimes it is a series of (sub)titles that are printed on the screen.&lt;/li&gt;
+  &lt;li&gt;Sometimes essential steps are shown on the screen (not with text).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So I started a new &lt;a href=&quot;https://laravel.com&quot;&gt;Laravel&lt;/a&gt; project and tried to tackle these one by one.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl -s &quot;https://laravel.build/NewAmazingIdea&quot; | bash&lt;/code&gt; still gives me a kick every time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;step-1-downloading-the-video&quot;&gt;Step 1: downloading the video&lt;/h2&gt;
+
+&lt;p&gt;The obvious choice there is &lt;a href=&quot;https://github.com/yt-dlp/yt-dlp&quot;&gt;yt-dlp&lt;/a&gt;. 
+It allows straightforward command-line downloading of YouTube, Instagram, TikTok, … videos.
+I encapsulated it in a PHP Class &lt;em&gt;Downloader&lt;/em&gt; that takes a URL and downloads the video to a local file.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-extracting-the-body-text&quot;&gt;Step 2: extracting the body text&lt;/h2&gt;
+
+&lt;p&gt;Again &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yt-dlp&lt;/code&gt; comes to the rescue. It can also download an JSON metadata file that contains the title, body text, duration… of the video.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yt-dlp &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--write-info-json&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;$output&apos;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;$url&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So the Downloader class now also downloads the metadata file and parses it.&lt;/p&gt;
+
+&lt;p&gt;In practice: this is often used in Instagram reels, and YouTube shorts, less so with TikTok posts.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-extracting-the-voiceover&quot;&gt;Step 3: extracting the voiceover&lt;/h2&gt;
+
+&lt;p&gt;This is where we open the Pandora’s box of A.I. services. I found an intermediate API service &lt;a href=&quot;https://www.edenai.co&quot;&gt;EdenAI&lt;/a&gt; that allows me to easily switch between different providers of a certain service. E.g. for speech-to-text I can choose between Google, Amazon AWS, Microsoft, IBM, …I tried some services out for speech recognition and I got the best results with &lt;a href=&quot;https://deepgram.com&quot;&gt;Deepgram&lt;/a&gt;, because they also format the resulting text in sentences with punctuation.&lt;/p&gt;
+
+&lt;p&gt;First I extract a mono audio file from the original video. Then I send it to the EdenAI API and get back a JSON file with the text.
+The EdenAI API is asynchronous, so I had to add a polling mechanism to my PHP class. Laravel queue to the rescue. Generally I get results back within 5 secs.&lt;/p&gt;
+
+&lt;p&gt;The result is readable: “&lt;em&gt;We’re making hot sauce a sweeter cousin, fermented hot honey. You’re gonna need honey. I’ve got some incredible raw honey here. Choice, remove the stalks and chop out nice and small. If don’t worry about. Finely slice some real onion, here slice some garlic cloves and pick some fresh thyme. (…)&lt;/em&gt;”&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-extracting-the-subtitles&quot;&gt;Step 4: extracting the subtitles&lt;/h2&gt;
+
+&lt;p&gt;At first ,I was afraid I would have to render out 2 to 4 frames per second and run a OCR service on each of them (which would have been expensive). 
+But I discovered there are already 2 &lt;a href=&quot;https://www.edenai.co/providers?technologies=Video&quot;&gt;video-to-text services&lt;/a&gt; out there, Amazon and Google.&lt;/p&gt;
+
+&lt;p&gt;First I extract a lower-res lower-framerate video from the original video. Again I send it to the EdenAI API and get back a JSON file with all the detected pieces of text and when they appeared.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the readability of the results is not great.&lt;/p&gt;
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;video controls=&quot;&quot; width=&quot;250&quot;&gt;&lt;source src=&quot;/wp-content/uploads/2023/12/chilis.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;/video&gt;&lt;/td&gt;
+&lt;td&gt;making hot sauce&apos;s &amp;bull; and leave to ferment &amp;bull; like and follow &amp;bull; and I don&apos;t wanna &amp;bull; you should smell &amp;bull; remove the stalks &amp;bull; and I wish &amp;bull; not to be missed &amp;bull; and don&apos;t forget &amp;bull; however you wish &amp;bull; you can leave the &amp;bull; stir everything together &amp;bull; the difference to &amp;bull; some garlic cloves &amp;bull; ready to enjoy &amp;bull; get those chillies &amp;bull; insanely good and &amp;bull; to like and follow &amp;bull; fresh thyme &amp;bull; honey to settle &amp;bull; for part 2 &amp;bull; nice and small &amp;bull; wait anymore &amp;bull; more honey as needed &amp;bull; all over this &amp;bull; sweeter cousin &amp;bull; and cover with that &amp;bull; it&apos;s like pizza &amp;bull; and chop it up &amp;bull; garlic and thyme (...)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;So I guess I need to work on this a bit longer.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-5-extracting-some-frames&quot;&gt;Step 5: extracting some frames&lt;/h2&gt;
+
+&lt;p&gt;For this Proof-of-Concept phase, I just extract 6 evenly spaces frames from the video. In theory, I could also use image recognition to extract the frames that contain the most relevant information, e.g. those that contain text (might be an illustrated instruction), or scene changes (might be a new step in the recipe).&lt;/p&gt;
+
+&lt;table&gt;&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0002.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0003.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0004.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0005.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0006.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;/wp-content/uploads/2023/12/ig-9fa8bbef/f.0007.jpg&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2 id=&quot;step-6-printing-the-result&quot;&gt;Step 6: printing the result&lt;/h2&gt;
+
+&lt;p&gt;So what does that look like all together?&lt;/p&gt;
+
+&lt;embed src=&quot;/wp-content/uploads/2023/12/recipe1.pdf&quot; width=&quot;800px&quot; height=&quot;1130px&quot; /&gt;
+
+&lt;p&gt;It sure works for some of the cooking/culinary videos that I had in mind. I’ve tested it with Instagram, YouTube and TikTok videos.
+In theory, it could work for any video that has a voiceover or subtitles.
+Fitness instructions, make-up videos, language lessons, …
+I haven’t tried it out on those yet.&lt;/p&gt;
+
+&lt;p&gt;It had gotten me enthusiastic enough to spin it up as a separate project: &lt;a href=&quot;https://printthatvideo.com&quot;&gt;PrintThatVideo.com&lt;/a&gt;.
+Subscribe over there if you want to keep track of the progress.
+Contact me at peter@printthatvideo.com if you have specific questions or suggestions, like “What does this look like for XYZ videos?” or “Can you also print the video on a t-shirt?”.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; data-uid=&quot;a43951c39d&quot; src=&quot;https://printthatvideo.ck.page/a43951c39d/index.js&quot;&gt;&lt;/script&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning Hungarian in an hour</title>
+   <link href="https://blog.forret.com/2023/11/17/learning-hungarian-in-an-hour/"/>
+   <updated>2023-11-17T21:49:04+00:00</updated>
+   <id>https://blog.forret.com/2023/11/17/hungarian-in-an-hour</id>
+   <content type="html">&lt;p&gt;In 2007 I wrote a post “&lt;a href=&quot;/2007/11/09/learning-bulgarian-in-an-hour/&quot;&gt;Learning Bulgarian in an Hour&lt;/a&gt;” based on this article: &lt;a href=&quot;https://tim.blog/2007/11/07/how-to-learn-but-not-master-any-language-in-1-hour-plus-a-favor/&quot;&gt;How to Learn (But Not Master) Any Language in 1 Hour&lt;/a&gt;. Let’s see how that works out with &lt;a href=&quot;https://en.wikipedia.org/wiki/Hungarian_language&quot;&gt;Hungarian&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2023/11/unsplash.hungary.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Disclaimer: my wife is Hungarian, I have had a lot of exposure to it, and somehow almost none of it stuck with me. 
+I’m normally not that bad with languages. So it’s their fault, not mine. Will I get chewed out for this article? Probably.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;“&lt;em&gt;Isn’t Hungarian, like, a slavic language?&lt;/em&gt;” (I get this question every now and then). Oh my, do I have news for you. Hungarian is a language isolate, meaning it has &lt;strong&gt;no known relatives&lt;/strong&gt;. It is not related to any other language in Europe, and is one of the few languages in the world that is not part of the Indo-European family. It is spoken by about 10 million people in Hungary and by an additional 3 million people in other countries, including Romania, Slovakia, Ukraine, Serbia, Croatia, and Austria.&lt;/p&gt;
+
+&lt;p&gt;Hungarians have been using the roman alphabet since 1000AD, before that it was written in &lt;a href=&quot;https://en.wikipedia.org/wiki/Old_Hungarian_script&quot;&gt;rovásírás - Hungarian runes&lt;/a&gt; . Their alphabet is 44 characters, 14 of which are vowels. That sounds like a lot, but part of it is that they strive for a phonetic language. E.g. if the ‘o’ in “pot” sounds different from the ‘o’ in “boot”, then it should be written differently. They’re very peculiar about their ‘s’ sounds: there’s s, sz, zs, cs and dzs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hungarian_alphabet_-_Magyar_ábécé.svg/2880px-Hungarian_alphabet_-_Magyar_ábécé.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;difficulty&quot;&gt;Difficulty&lt;/h2&gt;
+
+&lt;p&gt;Hungarian prides itself in being one of the most difficult languages on the continent. The Polish might disagree, but then, don’t they always. Let’s see how it scores on the 4 criteria:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;em&gt;Are there new grammatical structures that will postpone fluency? (look at Subject-Object-Verb vs. Subject-Verb-Object, as well as noun cases)&lt;/em&gt;&lt;br /&gt;
+There is no classical SOV or SVO. The Verb often leads (let’s call it VSO), the object gets suffixes to indicate position, direction or possession. Most importantly, there is no gender. “His car/Her car”, “to him/to her”, it’s all the same.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Are there new sounds that will double or quadruple time to fluency? (especially vowels)&lt;/em&gt;&lt;br /&gt;
+It is written phonetically, but not in the same way a german or roman language speaker would use the language. E.g. ‘s’ is pronounced ‘sh’ like in ‘shaman’, while ‘sz’ is the sound that we normally associate with s.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;How similar is it to languages I already understand? What will help and what will interfere? (Will acquisition erase a previous language? Can I borrow structures without fatal interference like Portuguese after Spanish?)&lt;/em&gt;&lt;br /&gt;
+You’re on your own here. It’s not related to any other language in Europe. They had a joint empire with the Austrians for a while, yet &lt;a href=&quot;https://hu.wiktionary.org/w/index.php?title=Kategória%3Ahu%3ANémet_eredetű_szavak&amp;amp;pageuntil=kappan#mw-pages&quot;&gt;almost no German words&lt;/a&gt; were adopted into the language.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;All of which answer: How difficult will it be, and how long would it take to become functionally fluent?&lt;/em&gt;&lt;br /&gt;
+I’m going to say: &lt;a href=&quot;https://www.newyorker.com/sports/sporting-scene/complexity-and-the-ten-thousand-hour-rule&quot;&gt;at least 10.000 hours&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;language-structure&quot;&gt;Language structure&lt;/h2&gt;
+
+&lt;p&gt;Let’s take these 9 sentences that clarify a lot about how the language works:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;English&lt;/th&gt;
+      &lt;th&gt;Hungarian&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The apple is red&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;A alma piros&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;It is John’s apple&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Ez János alma&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I give John the apple&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Odaadom Johnnak az almát&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;We give him the apple&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Adjuk neki az almát&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;He gives it to John&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Johnnak adja&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;She gives it to him&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Odaadja neki&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I must give it to him&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Oda kell adnom neki&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I want to give it to her&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Oda akarom adni neki&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I give John the red apple&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;Odaadom Johnnak a piros almát&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;helping-verbs&quot;&gt;Helping verbs&lt;/h2&gt;
+
+&lt;p&gt;And the verbs for easy auxiliary usage are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;English&lt;/th&gt;
+      &lt;th&gt;Hungarian&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I want, you want&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;akarok, akarsz&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I can, you can&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;tudok, tudsz&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I have to, you have to&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;kell, kell&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I love to, you love to&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;szeretek, szeretsz&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I must, you must&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;muszáj, muszáj&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I should, you should&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;kéne, kéne&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I will, you will&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;fogok, fogsz&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I would, you would&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;akarnék, akarnál&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;sounds-and-scripts&quot;&gt;Sounds and scripts&lt;/h2&gt;
+
+&lt;p&gt;Hungarian uses ⟨s⟩ for /ʃ/ and ⟨sz⟩ for /s/, which is the reverse of Polish usage. The letter ⟨zs⟩ is /ʒ/ and ⟨cs⟩ is /t͡ʃ/. The letter ⟨c⟩ is pronounced /t͡s/ before ⟨e⟩ and ⟨i⟩, and /k/ elsewhere. &lt;span style=&quot;font-size: .9em&quot;&gt;The letter ⟨y⟩ is used only in foreign words, and is pronounced /i/ or /j/ depending on context. The letter ⟨z⟩ is pronounced /z/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /s/ elsewhere. The letter ⟨r⟩ is pronounced /r/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /ɾ/ elsewhere. &lt;/span&gt;&lt;span style=&quot;font-size: .8em&quot;&gt;The letter ⟨ny⟩ is pronounced /ɲ/ and ⟨ly⟩ is pronounced /j/ before ⟨e⟩ and ⟨i⟩, and /ɲ/ elsewhere. The letter ⟨gy⟩ is pronounced /ɟ/ before ⟨e⟩ and ⟨i⟩, and /ɡ/ elsewhere. &lt;/span&gt;&lt;span style=&quot;font-size: .7em&quot;&gt;The letter ⟨h⟩ is pronounced /h/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /ɦ/ elsewhere. The letter ⟨v⟩ is pronounced /v/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /f/ elsewhere. &lt;/span&gt;&lt;span style=&quot;font-size: .6em&quot;&gt;The letter ⟨j⟩ is pronounced /j/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /j/ elsewhere. The letter ⟨l⟩ is pronounced /l/ before ⟨a⟩, ⟨á⟩, ⟨o⟩, ⟨ó⟩, ⟨u⟩, ⟨ú⟩, and /w/ elsewhere.&lt;/span&gt;&lt;span style=&quot;font-size: .5em&quot;&gt; The letter ⟨í⟩ is pronounced /iː/ and ⟨e⟩ is pronounced /ɛ/ before ⟨r⟩, ⟨l⟩, ⟨j⟩, ⟨v⟩, ⟨z⟩, ⟨s⟩, ⟨sz⟩, ⟨zs⟩, ⟨c⟩, ⟨cs⟩, ⟨dz⟩, ⟨dzs⟩, ⟨ty⟩, ⟨gy⟩, ⟨ny⟩, ⟨ly⟩, ⟨h⟩, ⟨n⟩, ⟨m⟩, ⟨p⟩, ⟨b⟩, ⟨f⟩, ⟨g⟩, ⟨k⟩, ⟨t⟩, ⟨d⟩, ⟨r⟩, ⟨l⟩&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;You still there?&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;What this tells me, is that it would be interesting to build a language evaluator for all languages, that would use a &lt;strong&gt;limited number of key sentences&lt;/strong&gt; to deduce usage of gender, plurals, suffixes, time, etc. and then give a score for the difficulty of the language.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Put your (software) version in a file</title>
+   <link href="https://blog.forret.com/2023/07/01/setver-semver/"/>
+   <updated>2023-07-01T00:00:00+00:00</updated>
+   <id>https://blog.forret.com/2023/07/01/setver-semver</id>
+   <content type="html">&lt;p&gt;I’ve started using my &lt;a href=&quot;/2020/07/31/package-version-management-with-semver-sh/&quot;&gt;setver&lt;/a&gt; &lt;a href=&quot;https://github.com/pforret/setver&quot;&gt;&lt;i class=&quot;fab fa-github-square&quot;&gt;&lt;/i&gt;&lt;/a&gt; bash tool for easy semver versioning of components and projects. One of the design decisions I  made back then, is that I would always have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION.md&lt;/code&gt; version file in the root of my project. This file only contains the current version number. This version is also stored in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;composer.json&lt;/code&gt; (PHP), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; (JS) files and git tags, but I wanted a system that also works for my &lt;a href=&quot;/category/bash/&quot;&gt;bash projects&lt;/a&gt;. In the end, it turns out that was a clever decision.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2023/07/versionmd.png&quot; alt=&quot;VERSION.md&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Having the version number auto-updated in a file, without any parsing or cleanup needed, makes it easy to use it in other places, like in the footer of a website. This is how that works for some of my projects:&lt;/p&gt;
+
+&lt;h3 id=&quot;php-projects&quot;&gt;PHP projects:&lt;/h3&gt;
+
+&lt;h4 id=&quot;using-smarty-templates&quot;&gt;using Smarty templates&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;theme folder&amp;gt;/templates/VERSION.md&lt;/code&gt; as a symbolic link to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION.md&lt;/code&gt; in the root of the project.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{include file=&quot;VERSION.md&quot;}&lt;/code&gt; in a Smarty template&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;using-laravelblade-templates&quot;&gt;using Laravel/Blade templates&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/resources/views/VERSION.blade.php&lt;/code&gt; as a symbolic link to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION.md&lt;/code&gt; in the root of the project.&lt;/li&gt;
+  &lt;li&gt;use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@include(&apos;VERSION&apos;)&lt;/code&gt; in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content.blade.php&lt;/code&gt; file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ruby-projects&quot;&gt;Ruby projects&lt;/h3&gt;
+
+&lt;h4 id=&quot;using-jekyll-liquid-templates&quot;&gt;using Jekyll /Liquid templates&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_includes/version.html&lt;/code&gt; as the actual version file and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION.md&lt;/code&gt; in the root of the project is a symbolic link to that file. (Because Jekyll does not allow symbolic links as content files)&lt;/li&gt;
+  &lt;li&gt;use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% include file=version.html %}&lt;/code&gt; in a Liquid template or Markdown file&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+
+</feed>
